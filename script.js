@@ -37,6 +37,6 @@ function fetchData(text) {
       var ouData = document.createElement("p");
       ouData.setAttribute("class", "searchResult");
       ouData.innerHTML = `Sorry, we couldn't find city`;
-      document.body.appendChild(ouData);
+      document.getElementById('search-container').appendChild(ouData);
     });
 }
