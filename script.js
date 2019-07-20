@@ -14,7 +14,7 @@ function fetchData(text) {
       //console.log(data);
       for (var i = 0; i < data.length; i++) {
         var city = "";
-        if (data[i].City === text) {
+        if (data[i].City === "Delhi") {
           //console.log(data[0]);
           city +=
             "City name: " +
@@ -27,10 +27,16 @@ function fetchData(text) {
             data[i].State;
 
           var ouData = document.createElement("p");
-          ouData.innerHTML = city;
+
           ouData.setAttribute("class", "searchResult");
+          ouData.innerHTML = city;
           document.body.appendChild(ouData);
         }
       }
+
+      var ouData = document.createElement("p");
+      ouData.setAttribute("class", "searchResult");
+      ouData.innerHTML = `Sorry, we couldn't find ${ouData} city`;
+      document.body.appendChild(ouData);
     });
 }
