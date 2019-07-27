@@ -1,7 +1,7 @@
 var searchBtn = document.querySelector("#searchItBtn");
 searchBtn.addEventListener("click", getInput);
 
-function getInput() {
+function getInput(e) {
   var userInput = document.querySelector("#search-box").value;
   fetchData(userInput);
   document.querySelector("#search-box").value = "";
@@ -12,8 +12,8 @@ function fetchData(text) {
     .then(response => response.json()) // if success transform json in JS object
     .then(data => {
       //console.log(data);
+      var city = "";
       for (var i = 0; i < data.length; i++) {
-        var city = "";
         if (data[i].City === text) {
           //console.log(data[0]);
           city +=
@@ -25,18 +25,21 @@ function fetchData(text) {
             "<br>" +
             "State: " +
             data[i].State;
-
+        }
+      }
+      if (city.length > 0) {
+        var checkEl = document.getElementById("searchResult");
+        if (checkEl) {
+          checkEl.innerHTML = city;
+        } else {
           var ouData = document.createElement("p");
 
-          ouData.setAttribute("class", "searchResult");
+          ouData.setAttribute("id", "searchResult");
           ouData.innerHTML = city;
           document.body.appendChild(ouData);
         }
+      } else {
+        alert("Sorry we couldn't find " + text + " City");
       }
-
-      var ouData = document.createElement("p");
-      ouData.setAttribute("class", "searchResult");
-      ouData.innerHTML = `Sorry, we couldn't find city`;
-      document.getElementById('search-container').appendChild(ouData);
     });
 }
