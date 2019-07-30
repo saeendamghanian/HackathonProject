@@ -1,7 +1,7 @@
 var searchBtn = document.querySelector("#searchItBtn");
 searchBtn.addEventListener("click", getInput);
 
-function getInput(e) {
+function getInput() {
   var userInput = document.querySelector("#search-box").value;
   fetchData(userInput);
   document.querySelector("#search-box").value = "";
