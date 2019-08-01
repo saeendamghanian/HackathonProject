@@ -26,17 +26,22 @@ function fetchData(text) {
             "State: " +
             data[i].State;
 
+       
+        }
+      }
+    if (city.length > 0) {
+        var checkEl = document.getElementById("searchResult");
+        if (checkEl) {
+          checkEl.innerHTML = city;
+        } else {
           var ouData = document.createElement("p");
 
-          ouData.setAttribute("class", "searchResult");
+          ouData.setAttribute("id", "searchResult");
           ouData.innerHTML = city;
           document.body.appendChild(ouData);
         }
+      } else {
+        alert("Sorry we couldn't find " + text + " City");
       }
-
-      var ouData = document.createElement("p");
-      ouData.setAttribute("class", "searchResult");
-      ouData.innerHTML = `Sorry, we couldn't find city`;
-      document.getElementById('search-container').appendChild(ouData);
     });
 }
